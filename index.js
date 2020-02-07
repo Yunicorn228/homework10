@@ -1,4 +1,4 @@
-//--------------------------------------first question
+// --------------------------------------first question
 // const isString = str => {
 //   if (str === +str) {
 //     return false;
@@ -7,7 +7,7 @@
 //   }
 // };
 // console.log(isString("jiaolian"));
-// console.log(isString(123));
+// console.log(isString("123"));
 
 //--------------------------------------second question
 // const isBlank = str => {
@@ -61,54 +61,67 @@
 // console.log(randomize(10, 15));
 
 //--------------------------------------seventh question
-// const strip = str => {
-//   return str.trim();
-// };
-// console.log(strip(" 123 15212 200 "));
-
-//--------------------------------------eighth question
-const rulingPhoneNumber = arr => {
-  const phoneStr = arr.join("");
-  return (
-    "(" +
-    phoneStr.slice(0, 3) +
-    ")-" +
-    phoneStr.slice(3, 6) +
-    "-" +
-    phoneStr.slice(6, phoneStr.length)
-  );
+const strip = str => {
+  return str.trim();
 };
+console.log(strip(" 123 15212 200 "));
 
-const formatPhoneNumber = input => {
-  //用户输入信息
-  const phoneArr = input.split("");
-  //转化为arr
-  const phoneNum = [];
-  //用来收集号码
-  for (var i = 0; i < phoneArr.length; i++) {
-    if (phoneArr[i] == Number(phoneArr[i])) {
-      //将用户输入的标点移除
-      phoneNum.push(phoneArr[i]);
-      //phoneNum里之有number
-    }
-  }
-
-  if (phoneNum[0] == 1 && phoneNum.length == 11) {
-    //当用户在电话里号码前加1 的时候
-    phoneNum.shift();
-  }
-
-  if (input == rulingPhoneNumber(phoneNum)) {
-    //用户输入正确
-    return true;
-  }
-
-  if (phoneNum.length != 10) {
-    //太长或太短
-    return false;
+const striper = str => {
+  if (str[0] === " " && str[length - 1] === " ") {
+    return str.slice(1, str[length - 2]);
+  } else if (str[0] === " ") {
+    return str.slice(1, str[length - 1]);
+  } else if (str[length - 1] === " ") {
+    return str.slice(0, str[length - 2]);
   } else {
-    return rulingPhoneNumber(phoneNum);
-    //callback rulingPhoneNumber 输出正确format
+    return str;
   }
 };
-console.log(formatPhoneNumber("3476547566"));
+
+console.log(striper(" 123 15212 200") + 123);
+// //--------------------------------------eighth question
+// const rulingPhoneNumber = arr => {
+//   const phoneStr = arr.join("");
+//   return (
+//     "(" +
+//     phoneStr.slice(0, 3) +
+//     ")-" +
+//     phoneStr.slice(3, 6) +
+//     "-" +
+//     phoneStr.slice(6, phoneStr.length)
+//   );
+// };
+
+// const formatPhoneNumber = input => {
+//   //用户输入信息
+//   const phoneArr = input.split("");
+//   //转化为arr
+//   const phoneNum = [];
+//   //用来收集号码
+//   for (var i = 0; i < phoneArr.length; i++) {
+//     if (phoneArr[i] == Number(phoneArr[i])) {
+//       //将用户输入的标点移除
+//       phoneNum.push(phoneArr[i]);
+//       //phoneNum里之有number
+//     }
+//   }
+
+//   if (phoneNum[0] == 1 && phoneNum.length == 11) {
+//     //当用户在电话里号码前加1 的时候
+//     phoneNum.shift();
+//   }
+
+//   if (input == rulingPhoneNumber(phoneNum)) {
+//     //用户输入正确
+//     return true;
+//   }
+
+//   if (phoneNum.length !== 10) {
+//     //太长或太短
+//     return false;
+//   } else {
+//     return rulingPhoneNumber(phoneNum);
+//     //callback rulingPhoneNumber 输出正确format
+//   }
+// };
+// console.log(formatPhoneNumber(".13476*+*547-566"));
